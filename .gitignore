@@ -1,0 +1,14 @@
+/vendor
+/.idea
+Homestead.json
+Homestead.yaml
+.env
+.env.testing
+.env.sandbox
+config/geoip.php
+tests/_output/*
+tests/api.suite.yml
+tests/unit.suite.yml
+tests/functional.suite.yml
+Rest/
+Notes
