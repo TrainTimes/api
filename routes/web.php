@@ -21,3 +21,7 @@ $router->group(['prefix' => env('API_VER')], function () use ($router) {
     $router->get('/routes/{province_id}', ['uses' => 'TrainTimesController@route']);
     $router->get('/stations/{route_id}', ['uses' => 'TrainTimesController@station']);
 });
+
+$router->group(['prefix' => 'shopify'], function () use ($router) {
+    $router->get('/install', ['uses' => 'ShopifyController@install']);
+});
