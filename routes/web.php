@@ -24,5 +24,5 @@ $router->group(['prefix' => env('API_VER')], function () use ($router) {
 
 $router->group(['prefix' => 'shopify'], function () use ($router) {
     $router->get('/install', ['uses' => 'ShopifyController@install']);
-    $router->get('/generatetoken.', ['uses' => 'ShopifyController@generateToken']);
+    $router->get('/generatetoken', ['uses' => 'ShopifyController@generateToken']);
 });
