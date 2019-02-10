@@ -19,7 +19,7 @@ class ShopifyController extends Controller
         $scopes = "read_orders,read_products,write_products";
         $redirect_uri = "https://www.traintimes.co.za/shopify/generatetoken";
         $shop = $data['shop'];
-        $install_url = "https://www." . $shop . "/admin/oauth/authorize?client_id=" . $api_key . "&scope=" .
+        $install_url = "https://" . $shop . "/admin/oauth/authorize?client_id=" . $api_key . "&scope=" .
             $scopes . "&redirect_uri=" . urlencode($redirect_uri);
 
         Log::debug($pre . ' >> Shopify App Installation >> . eof');
