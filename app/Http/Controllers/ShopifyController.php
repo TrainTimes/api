@@ -87,9 +87,19 @@ class ShopifyController extends Controller
         // Store the access token
         $result = json_decode($result, true);
         Log::debug($pre . ' >> Shopify API return code >> ' . $curlInfo['http_code']);
-        Log::debug($pre . ' >> Shopify Access Token >> . eof' . $result['access_token']);
 
-        // make a test call & log the products returned.
+        // make a test call & log the products returned & persist access_token
+        if ($curlInfo['http_code'] === 200 ){
+            Log::debug($pre . ' >> Shopify Access Token >> . eof' . $result['access_token']);
+
+            $products = shopify_call($result['access_token'], $shop, "/admin/products.json", array(), 'GET');
+            $products = $products['response'];
+
+            Log::debug($pre . ' >> Products  for shop >> . eof' . $shop . ' << ' . print_r($products) );
+
+        } else {
+            Log::debug($pre . ' >> We were unable to get Shopify Access Token  for shop >> . eof' . $shop);
+        }
 
         return $access_token = $result['access_token'];
     }
