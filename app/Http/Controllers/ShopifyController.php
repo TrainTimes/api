@@ -72,18 +72,25 @@ class ShopifyController extends Controller
         $access_token_url = "https://" . $shop . "/admin/oauth/access_token";
 
         // Configure curl client and execute request
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        $ch = $this->newCurl();
+
+        // Adjust settings as required
         curl_setopt($ch, CURLOPT_URL, $access_token_url);
         curl_setopt($ch, CURLOPT_POST, count($query));
         curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($query));
+
+        // Execute CURL
         $result = curl_exec($ch);
+        $curlInfo = curl_getinfo($ch);
         curl_close($ch);
 
         // Store the access token
         $result = json_decode($result, true);
-        Log::debug($pre . ' >> Shopify App Get Access Token >> . bof');
+        Log::debug($pre . ' >> Shopify API return code >> ' . $curlInfo['http_code']);
         Log::debug($pre . ' >> Shopify Access Token >> . eof' . $result['access_token']);
+
+        // make a test call & log the products returned.
+
         return $access_token = $result['access_token'];
     }
 
