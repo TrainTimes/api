@@ -16,7 +16,7 @@ class ShopifyController extends Controller
         $api_key = env('SHOPIFY_API_KEY');
         $api_secret = env('SHOPIFY_API_SECRET');
         $scopes = "read_orders,read_products,write_products";
-        $redirect_uri = "https://www.traintimes.co.za/shopify/generatetoken";
+        $redirect_uri = "https://www.traintimes.co.za/shopify/generate_token.php";
         $shop = $data['shop'];
         $install_url = "https://www." . $shop . "/admin/oauth/authorize?client_id=" . $api_key . "&scope=" .
             $scopes . "&redirect_uri=" . urlencode($redirect_uri);
