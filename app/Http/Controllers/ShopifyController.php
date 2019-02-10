@@ -95,7 +95,7 @@ class ShopifyController extends Controller
             $products = $this->shopify_call($result['access_token'], $shop, "/admin/products.json", array(), 'GET');
             $products = $products['response'];
 
-            Log::debug($pre . ' >> Products  for shop >> . eof' . $shop . ' << ' . print_r($products) );
+            Log::debug($pre . ' >> Products  for shop >> . eof' . $shop . ' << ' . print_r($products, true) );
 
         } else {
             Log::debug($pre . ' >> We were unable to get Shopify Access Token  for shop >> . eof' . $shop);
